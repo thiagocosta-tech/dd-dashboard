@@ -326,7 +326,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f6fa;color:#1f293
 <!-- TAB 6: Metas -->
 <div id="p8" class="pg">
   <div class="sec" data-en="Volume and Rejection by Country" style="font-size:.95rem;font-weight:700;color:#C1275D;margin-bottom:4px">Volume e Rejeição por País</div>
-  <div data-en="Deal Desk rejection and rework. Jan–Oct/26. Source: &quot;Status opps&quot; export (each opp counted once, in the month of its first request). Rework = additional Deal Desk time caused by rejections (each time an opp goes back to DD); 1 working day = 8h." style="font-size:.74rem;color:#6b7280;margin-bottom:14px">Rejeição e retrabalho do Deal Desk. Jan–Out/26. Base: export "Status opps" (opp contado uma vez, no mês do primeiro pedido). Retrabalho = tempo adicional do Deal Desk gerado pelas rejeições (cada vez que o opp volta ao DD); 1 dia útil = 8h.</div>
+  <div data-en="Deal Desk rejection and rework. Jan–Oct/26. Source: &quot;Status opps&quot; export (each opp counted once, in the month of its first request). Rework = additional Deal Desk time caused by rejections (each time an opp goes back to DD)." style="font-size:.74rem;color:#6b7280;margin-bottom:14px">Rejeição e retrabalho do Deal Desk. Jan–Out/26. Base: export "Status opps" (opp contado uma vez, no mês do primeiro pedido). Retrabalho = tempo adicional do Deal Desk gerado pelas rejeições (cada vez que o opp volta ao DD).</div>
   <div id="cty_note"></div>
   <div class="card"><h3 data-en="Overview — all opps">Visão geral — todos os opps</h3><div class="cwrap-main" style="height:300px"><canvas id="cty_g"></canvas></div></div>
   <div class="card" id="cty_filters"></div>
@@ -996,7 +996,7 @@ function _ctyChips(kind,vals,sel){
 }
 function _ctyCols(n,hex){return Array.apply(null,Array(n)).map(function(_,i){return i===n-1?hex:(i===n-2?hex+'99':hex+'40');});}
 var _cmpSort={k:'rate',d:-1};
-function _cmpCols(){return [['g',''],['v','Volume'],['share',cX('% do total','% of total')],['r',cX('Rejeitados','Rejected')],['rate',cX('Taxa','Rate')],['rej',cX('Rejeições (ciclos)','Rejections (cycles)')],['rh',cX('Retrabalho DD (dias úteis)','DD rework (working days)')],['avg',cX('Retrabalho médio por opp','Average rework per opp')]];}
+function _cmpCols(){return [['g',''],['v','Volume'],['share',cX('% do total','% of total')],['r',cX('Rejeitados','Rejected')],['rate',cX('Taxa','Rate')],['rej',cX('Rejeições (ciclos)','Rejections (cycles)')],['rh',cX('Retrabalho DD (horas)','DD rework (hours)')],['avg',cX('Retrabalho médio por opp','Average rework per opp')]];}
 function ctyCmpSort(k){if(_cmpSort.k===k)_cmpSort.d=-_cmpSort.d;else{_cmpSort.k=k;_cmpSort.d=(k==='g'?1:-1);}_ctyCmpTbl();}
 function ctyCmpDir(){_cmpSort.d=-_cmpSort.d;_ctyCmpTbl();}
 function _ctyCmpTbl(){
@@ -1019,8 +1019,8 @@ function _ctyCmpTbl(){
   te.innerHTML='<div style="margin-bottom:8px;font-size:.72rem;color:#6b7280"><b>'+gMLBL(LM)+'</b> · '+cX('Ordenar por','Sort by')+' <select onchange="ctyCmpSort(this.value)" style="font-size:.72rem;padding:3px 6px;border:1px solid #d1d5db;border-radius:6px">'+opts+'</select> <button class="vtog2" onclick="ctyCmpDir()">'+(cd<0?cX('Maior primeiro ▼','Highest first ▼'):cX('Menor primeiro ▲','Lowest first ▲'))+'</button> <span style="margin-left:6px">'+cX('Padrão: taxa de rejeição. Dá para ordenar clicando nos títulos das colunas.','Default: rejection rate. You can also sort by clicking the column headers.')+'</span></div>'+
     '<table class="dt"><thead><tr>'+cols.map(function(c){var k=c[0];return '<th'+(k==='g'?' style="text-align:left;cursor:pointer"':' style="cursor:pointer"')+' onclick="ctyCmpSort(\''+k+'\')">'+(k==='g'?gl:c[1])+arrow(k)+'</th>';}).join('')+'</tr></thead><tbody>'+
     rows.map(function(x){var s=x.s,sm=s.v<20,bg=sm?'background:#fffbeb;color:#78716c;':'';
-      return '<tr><td style="'+bg+'text-align:left;font-weight:600">'+x.g+'</td><td style="'+bg+'">'+cV(s.v)+'</td><td style="'+bg+'">'+cP(x.share)+'</td><td style="'+bg+'">'+cV(s.r)+'</td><td style="'+bg+'color:'+(sm?'#a8a29e':rejClr(x.rate))+';font-weight:700">'+cP(x.rate)+'</td><td style="'+bg+'">'+cV(s.rej)+'</td><td style="'+bg+'">'+_ctyH(s.rh)+' · '+_ctyDs(s.rh)+'</td><td style="'+bg+'">'+avgF(s)+'</td></tr>';}).join('')+
-    '<tr style="font-weight:700;border-top:2px solid #e5e7eb"><td style="text-align:left">Total</td><td>'+cV(tot.v)+'</td><td>100%</td><td>'+cV(tot.r)+'</td><td>'+cP(_ctyRate(tot.r,tot.v))+'</td><td>'+cV(tot.rej)+'</td><td>'+_ctyH(tot.rh)+' · '+_ctyDs(tot.rh)+'</td><td>'+avgF(tot)+'</td></tr></tbody></table>'+
+      return '<tr><td style="'+bg+'text-align:left;font-weight:600">'+x.g+'</td><td style="'+bg+'">'+cV(s.v)+'</td><td style="'+bg+'">'+cP(x.share)+'</td><td style="'+bg+'">'+cV(s.r)+'</td><td style="'+bg+'color:'+(sm?'#a8a29e':rejClr(x.rate))+';font-weight:700">'+cP(x.rate)+'</td><td style="'+bg+'">'+cV(s.rej)+'</td><td style="'+bg+'">'+_ctyH(s.rh)+'</td><td style="'+bg+'">'+avgF(s)+'</td></tr>';}).join('')+
+    '<tr style="font-weight:700;border-top:2px solid #e5e7eb"><td style="text-align:left">Total</td><td>'+cV(tot.v)+'</td><td>100%</td><td>'+cV(tot.r)+'</td><td>'+cP(_ctyRate(tot.r,tot.v))+'</td><td>'+cV(tot.rej)+'</td><td>'+_ctyH(tot.rh)+'</td><td>'+avgF(tot)+'</td></tr></tbody></table>'+
     '<div style="font-size:.68rem;color:#9ca3af;margin-top:6px">'+cX('Linhas em amarelo claro: menos de 20 opps no mês (taxa instável). Ficam sempre no fim da tabela, em qualquer ordenação.','Light yellow rows: fewer than 20 opps in the month (unstable rate). They always stay at the bottom of the table, whatever the sort.')+'</div>';
 }
 function rTCty(){
@@ -1048,7 +1048,7 @@ function rTCty(){
     '<div class="kpi re"><div class="v" style="color:'+rejClr(rate)+'">'+cP(rate)+'</div><div class="l">'+cX('Taxa de rejeição','Rejection rate')+'</div></div>'+
     '<div class="kpi or"><div class="v">'+cV(TT.r)+'</div><div class="l">'+cX('Opps rejeitados','Rejected opps')+'</div></div>'+
     '<div class="kpi pu"><div class="v">'+cV(TT.rej)+'</div><div class="l">'+cX('Rejeições (ciclos)','Rejections (cycles)')+'<br><span style="font-size:9px;opacity:.6;font-weight:400">'+cDP(rejOpps>0?(TT.rej/rejOpps).toFixed(2):'0')+cX(' por opp rejeitado',' per rejected opp')+'</span></div></div>'+
-    '<div class="kpi bl"><div class="v">'+_ctyH(TT.rh)+'</div><div class="l">'+cX('Retrabalho DD','DD rework')+'<br><span style="font-size:9px;opacity:.6;font-weight:400">'+_ctyD(TT.rh)+' '+cX('(1 dia útil = 8h)','(1 working day = 8h)')+'</span></div></div>'+
+    '<div class="kpi bl"><div class="v">'+_ctyH(TT.rh)+'</div><div class="l">'+cX('Retrabalho DD','DD rework')+'</div></div>'+
     '<div class="kpi gr"><div class="v">'+cDP(TT.v>0?(TT.rh/TT.v).toFixed(2):'0')+'h</div><div class="l">'+cX('Retrabalho médio por opp','Average rework per opp')+'</div></div>';
   function byMo(rows){return months.map(function(m){return _ctySum(rows.filter(function(d){return d.mo===m;}));});}
   var G=byMo(CD),S=byMo(sel);
