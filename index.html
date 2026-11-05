@@ -1074,20 +1074,24 @@ function rTCty(){
     var dK=hasCountry?'c':'reg';
     var cmpKeys=[];CD.forEach(function(d){var g=d[dK]||cX('Sem país','No country');if(cmpKeys.indexOf(g)<0)cmpKeys.push(g);});
     function mSum(g,m){return _ctySum(CD.filter(function(d){return d.mo===m&&(g===null||(d[dK]||cX('Sem país','No country'))===g);}));}
-    var cmpAll=cmpKeys.slice();cmpKeys=cmpKeys.filter(function(g){return mSum(g,mL).v>=20;});var cmpHid=cmpAll.filter(function(g){return cmpKeys.indexOf(g)<0;});
-    cmpKeys.sort(function(a,b){return mSum(b,mL).v-mSum(a,mL).v;});
+    var cmpAll=cmpKeys.filter(function(g){return mSum(g,mL).v>0;});
+    cmpAll.sort(function(a,b){return mSum(b,mL).v-mSum(a,mL).v;});
+    cmpKeys=cmpAll;var nBigK=cmpAll.filter(function(g){return mSum(g,mL).v>=20;}).length;
     var cmpLbl=['Total'].concat(cmpKeys),cmpGrp=[null].concat(cmpKeys);
-    var rP=cmpGrp.map(function(g){var s=mSum(g,mP);return _ctyRate(s.r,s.v);});
-    var rL=cmpGrp.map(function(g){var s=mSum(g,mL);return _ctyRate(s.r,s.v);});
+    var rP=cmpGrp.map(function(g){var s=mSum(g,mP);return s.v>0?_ctyRate(s.r,s.v):null;});
+    var rL=cmpGrp.map(function(g){var s=mSum(g,mL);return s.v>0?_ctyRate(s.r,s.v):null;});
+    var nBig=1+nBigK;
+    var colP=cmpLbl.map(function(_,i){return i>=nBig?'#fcd34d99':'#9ca3af88';});
+    var colL=cmpLbl.map(function(_,i){return i>=nBig?'#f59e0b':'#C1275D';});
     mk('cty_m',{type:'bar',data:{labels:cmpLbl,datasets:[
-      {label:gMLBL(mP)+cX(' (referência)',' (reference)'),data:rP,backgroundColor:'#9ca3af88',borderRadius:3},
-      {label:gMLBL(mL)+cX(' (mês atual)',' (current month)'),data:rL,backgroundColor:'#C1275D',borderRadius:3}
-    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:LEGEND_OPTS,tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+cDP(c.parsed.y)+'%';}}}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{callback:function(v){return v+'%';},font:{size:9}}}},animation:{duration:300}}});
+      {label:gMLBL(mP)+cX(' (referência)',' (reference)'),data:rP,backgroundColor:colP,borderRadius:3},
+      {label:gMLBL(mL)+cX(' (mês atual)',' (current month)'),data:rL,backgroundColor:colL,borderRadius:3}
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,labels:{font:{size:10},boxWidth:12,padding:8,generateLabels:function(ch){var b=Chart.defaults.plugins.legend.labels.generateLabels(ch);if(cmpKeys.length>nBigK)b.push({text:cX('Países com menos de 20 opps no mês (taxa instável)','Countries with fewer than 20 opps in the month (unstable rate)'),fillStyle:'#f59e0b',strokeStyle:'#f59e0b',lineWidth:0,hidden:false,datasetIndex:-1});return b;}},onClick:function(e,it,lg){if(it.datasetIndex<0)return;Chart.defaults.plugins.legend.onClick.call(this,e,it,lg);}},tooltip:{callbacks:{label:function(c){var g=cmpGrp[c.dataIndex],mm=c.datasetIndex===0?mP:mL;return c.dataset.label+': '+cDP(c.parsed.y)+'% · '+mSum(g,mm).v+' opps';}}}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{callback:function(v){return v+'%';},font:{size:9}}}},animation:{duration:300}}});
     if(cmpEl){
       var tP=mSum(null,mP),tL=mSum(null,mL);
       function dl(a,b,fmt,inv){var d=a-b;var up=d>0;var good=inv?!up:up;var cl=d===0?'#6b7280':(good?'#16a34a':'#dc2626');return '<span style="color:'+cl+';font-weight:700">'+(d>0?'▲ ':d<0?'▼ ':'')+fmt(Math.abs(d))+'</span>';}
       cmpEl.innerHTML=
-        '<b>'+gMLBL(mL)+'</b> '+cX('contra','vs')+' <b>'+gMLBL(mP)+'</b> · '+cX('volume','volume')+' '+cV(tL.v)+' ('+dl(tL.v,tP.v,cV,false)+') · '+cX('taxa de rejeição','rejection rate')+' '+cP(_ctyRate(tL.r,tL.v))+' ('+dl(_ctyRate(tL.r,tL.v),_ctyRate(tP.r,tP.v),function(x){return cDP(Math.round(x*10)/10)+' p.p.';},true)+') · '+cX('retrabalho DD','DD rework')+' '+_ctyH(tL.rh)+' ('+dl(tL.rh,tP.rh,_ctyH,true)+')'+(cmpHid.length?'<div style="font-size:.68rem;color:#9ca3af;margin-top:4px">'+cX('Ficam fora do gráfico os países com menos de 20 opps em '+gMLBL(mL)+' (','Countries with fewer than 20 opps in '+gMLBL(mL)+' are left out of the chart (')+cmpHid.join(', ')+').</div>':'');
+        '<b>'+gMLBL(mL)+'</b> '+cX('contra','vs')+' <b>'+gMLBL(mP)+'</b> · '+cX('volume','volume')+' '+cV(tL.v)+' ('+dl(tL.v,tP.v,cV,false)+') · '+cX('taxa de rejeição','rejection rate')+' '+cP(_ctyRate(tL.r,tL.v))+' ('+dl(_ctyRate(tL.r,tL.v),_ctyRate(tP.r,tP.v),function(x){return cDP(Math.round(x*10)/10)+' p.p.';},true)+') · '+cX('retrabalho DD','DD rework')+' '+_ctyH(tL.rh)+' ('+dl(tL.rh,tP.rh,_ctyH,true)+')'+(cmpKeys.length>nBigK?'<div style="font-size:.68rem;color:#9ca3af;margin-top:4px">'+cX('Barras amarelas: países com menos de 20 opps em '+gMLBL(mL)+', no fim do gráfico (a taxa oscila muito). Países sem opps no mês não aparecem.','Yellow bars: countries with fewer than 20 opps in '+gMLBL(mL)+', at the end of the chart (the rate swings widely). Countries with no opps in the month are not shown.')+'</div>':'');
     }
   } else if(cmpEl){cmpEl.innerHTML='';}
   _ctySfRender();
