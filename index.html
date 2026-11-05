@@ -325,21 +325,21 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f6fa;color:#1f293
 </div>
 <!-- TAB 6: Metas -->
 <div id="p8" class="pg">
-  <div class="sec" style="font-size:.95rem;font-weight:700;color:#C1275D;margin-bottom:4px">Volume e Rejeição por País</div>
-  <div style="font-size:.74rem;color:#6b7280;margin-bottom:14px">Rejeição e retrabalho do Deal Desk. Jan–Out/26. Base: export "Status opps" (opp contado uma vez, no mês do primeiro pedido). Retrabalho = tempo adicional do Deal Desk gerado pelas rejeições (cada vez que o opp volta ao DD); 1 dia útil = 8h.</div>
+  <div class="sec" data-en="Volume and Rejection by Country" style="font-size:.95rem;font-weight:700;color:#C1275D;margin-bottom:4px">Volume e Rejeição por País</div>
+  <div data-en="Deal Desk rejection and rework. Jan–Oct/26. Source: &quot;Status opps&quot; export (each opp counted once, in the month of its first request). Rework = additional Deal Desk time caused by rejections (each time an opp goes back to DD); 1 working day = 8h." style="font-size:.74rem;color:#6b7280;margin-bottom:14px">Rejeição e retrabalho do Deal Desk. Jan–Out/26. Base: export "Status opps" (opp contado uma vez, no mês do primeiro pedido). Retrabalho = tempo adicional do Deal Desk gerado pelas rejeições (cada vez que o opp volta ao DD); 1 dia útil = 8h.</div>
   <div id="cty_note"></div>
-  <div class="card"><h3>Visão geral — todos os opps</h3><div class="cwrap-main" style="height:300px"><canvas id="cty_g"></canvas></div></div>
+  <div class="card"><h3 data-en="Overview — all opps">Visão geral — todos os opps</h3><div class="cwrap-main" style="height:300px"><canvas id="cty_g"></canvas></div></div>
   <div class="card" id="cty_filters"></div>
   <div class="krow" id="k_cty" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"></div>
-  <div class="card"><h3>Mês mais recente vs anterior — taxa de rejeição</h3><div id="cty_cmp_sub" style="font-size:.78rem;color:#374151;margin-bottom:8px"></div><div class="cwrap-main" style="height:300px"><canvas id="cty_m"></canvas></div></div>
-  <div class="card"><h3>Volume e taxa de rejeição — seleção</h3><div class="cwrap-main" style="height:300px"><canvas id="cty_s"></canvas></div></div>
+  <div class="card"><h3 data-en="Latest month vs previous — rejection rate">Mês mais recente vs anterior — taxa de rejeição</h3><div id="cty_cmp_sub" style="font-size:.78rem;color:#374151;margin-bottom:8px"></div><div class="cwrap-main" style="height:300px"><canvas id="cty_m"></canvas></div></div>
+  <div class="card"><h3 data-en="Volume and rejection rate — selection">Volume e taxa de rejeição — seleção</h3><div class="cwrap-main" style="height:300px"><canvas id="cty_s"></canvas></div></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
-    <div class="card"><h3>Quantas vezes o opp foi rejeitado</h3><div class="cwrap-main" style="height:280px"><canvas id="cty_n"></canvas></div></div>
-    <div class="card"><h3>Tempo perdido com retrabalho do DD</h3><div class="cwrap-main" style="height:280px"><canvas id="cty_h"></canvas></div></div>
+    <div class="card"><h3 data-en="How many times the opp was rejected">Quantas vezes o opp foi rejeitado</h3><div class="cwrap-main" style="height:280px"><canvas id="cty_n"></canvas></div></div>
+    <div class="card"><h3 data-en="Time lost to DD rework">Tempo perdido com retrabalho do DD</h3><div class="cwrap-main" style="height:280px"><canvas id="cty_h"></canvas></div></div>
   </div>
-  <div class="card"><h3>Volume por país — direto do Salesforce (Jan–Out/26)</h3><div style="font-size:.72rem;color:#6b7280;margin-bottom:8px">Solicitações do Deal Desk por país da conta do opp (Salesforce, objeto de aprovação; exclui auto-aprovadas). Pode diferir em poucos % do export "Status opps".</div><div class="cwrap-main" style="height:320px"><canvas id="cty_sf"></canvas></div><div id="cty_sf_t" style="overflow-x:auto;margin-top:12px"></div></div>
-  <div class="card"><h3>Executivos com taxa de rejeição acima de 25% (mín. 5 opps) — mês mais recente</h3><div style="margin-bottom:6px"><button class="vtog2" style="background:#C1275D;color:#fff;border-color:#C1275D" onclick="ctyExecDownload()">Baixar lista completa (CSV, abre no Excel)</button> <span id="cty_exec_msg" style="font-size:.7rem;color:#6b7280;margin-left:6px"></span><div style="font-size:.68rem;color:#9ca3af;margin-top:4px">O arquivo traz todos os executivos com ao menos 1 rejeição no mês (inclusive os abaixo de 25%), ordenados pela taxa dentro de cada grupo de países.</div></div><div id="cty_exec_t"></div></div>
-  <div class="card"><h3>Comparativo</h3><div id="cty_tbl" style="overflow-x:auto"></div></div>
+  <div class="card"><h3 data-en="Volume by country — straight from Salesforce (Jan–Oct/26)">Volume por país — direto do Salesforce (Jan–Out/26)</h3><div data-en="Deal Desk requests by country of the opp's account (Salesforce approval object; excludes auto-approved). May differ by a few % from the &quot;Status opps&quot; export." style="font-size:.72rem;color:#6b7280;margin-bottom:8px">Solicitações do Deal Desk por país da conta do opp (Salesforce, objeto de aprovação; exclui auto-aprovadas). Pode diferir em poucos % do export "Status opps".</div><div class="cwrap-main" style="height:320px"><canvas id="cty_sf"></canvas></div><div id="cty_sf_t" style="overflow-x:auto;margin-top:12px"></div></div>
+  <div class="card"><h3 data-en="Executives with rejection rate above 25% (min. 5 opps) — latest month">Executivos com taxa de rejeição acima de 25% (mín. 5 opps) — mês mais recente</h3><div style="margin-bottom:6px"><button class="vtog2" data-en="Download full list (CSV, opens in Excel)" style="background:#C1275D;color:#fff;border-color:#C1275D" onclick="ctyExecDownload()">Baixar lista completa (CSV, abre no Excel)</button> <span id="cty_exec_msg" style="font-size:.7rem;color:#6b7280;margin-left:6px"></span><div data-en="The file lists all executives with at least 1 rejection in the month (including those below 25%), ordered by rate within each country group." style="font-size:.68rem;color:#9ca3af;margin-top:4px">O arquivo traz todos os executivos com ao menos 1 rejeição no mês (inclusive os abaixo de 25%), ordenados pela taxa dentro de cada grupo de países.</div></div><div id="cty_exec_t"></div></div>
+  <div class="card"><h3 data-en="Comparison">Comparativo</h3><div id="cty_tbl" style="overflow-x:auto"></div></div>
 </div>
 
 <div id="p7" class="pg">
@@ -895,13 +895,13 @@ var SF_VOL={
 };
 var SF_NAMES={BR:'Brazil',AR:'Argentina',US:'United States',DE:'Germany',ES:'Spain',IT:'Italy',MX:'Mexico',GB:'United Kingdom',CL:'Chile',PT:'Portugal',RO:'Romania',IE:'Ireland',BE:'Belgium',CA:'Canada',FR:'France',NL:'Netherlands',LU:'Luxembourg',_:'Sem país'};
 var SF_COLS=['#16a34a','#C1275D','#7c3aed','#0891b2','#d97706','#dc2626','#2563eb','#65a30d','#db2777','#0d9488','#9333ea','#ea580c','#64748b','#ca8a04','#4f46e5','#059669','#be123c','#6b7280'];
-var _sfSel=new Set(),_sfNoBR=false;
-function sfToggle(v){
-  if(v==='')_sfSel.clear();
-  else if(v==='__nobr')_sfNoBR=!_sfNoBR;
-  else if(_sfSel.has(v))_sfSel.delete(v);else _sfSel.add(v);
-  _ctySfRender();
-}
+function cX(pt,en){return _lang==='en'?en:pt;}
+function cDP(s){s=String(s);return _lang==='en'?s:s.replace('.',',');}
+function cLOC(){return _lang==='en'?'en-US':'pt-BR';}
+function cV(v){return v!=null?v.toLocaleString(cLOC()):'—';}
+function cP(v){return v!=null?cDP(v)+'%':'—';}
+function ctyStatic(){document.querySelectorAll('#p8 [data-en]').forEach(function(el){if(el.getAttribute('data-pt')===null)el.setAttribute('data-pt',el.innerHTML);el.innerHTML=_lang==='en'?el.getAttribute('data-en'):el.getAttribute('data-pt');});}
+var _sfName=function(c){return c==='_'?cX('Sem país','No country'):(SF_NAMES[c]||c);};
 function _ctySfRender(){
   var mos=Object.keys(SF_VOL).sort();
   var tot={};mos.forEach(function(m){Object.keys(SF_VOL[m]).forEach(function(c){tot[c]=(tot[c]||0)+SF_VOL[m][c];});});
@@ -909,50 +909,46 @@ function _ctySfRender(){
   function rgOf(c){var n=SF_NAMES[c];for(var i=0;i<COUNTRY_DATA.length;i++)if(COUNTRY_DATA[i].c===n)return COUNTRY_DATA[i].reg;return null;}
   var filt=_ctyC.size>0||_ctyR.size>0;
   var vis=codes.filter(function(c){if(filt&&c==='_')return false;return (_ctyC.size===0||_ctyC.has(SF_NAMES[c]))&&(_ctyR.size===0||_ctyR.has(rgOf(c)));});
-  function chip(lbl,on,fn){return '<button class="vtog2'+(on?' on':'')+'" style="'+(on?'background:#C1275D;color:#fff;border-color:#C1275D;':'')+'" onclick="'+fn+'">'+lbl+'</button> ';}
-  var fe=document.getElementById('cty_sf_f');
-  if(fe)fe.innerHTML='';
   var lbl=mos.map(function(m){return gMLBL(m);});
-  mk('cty_sf',{type:'bar',data:{labels:lbl,datasets:vis.map(function(c){var i=codes.indexOf(c);return {label:SF_NAMES[c]||c,data:mos.map(function(m){return SF_VOL[m][c]||0;}),backgroundColor:c==='BR'?'#16a34a':SF_COLS[(i+1)%SF_COLS.length],stack:'s'};})},
+  mk('cty_sf',{type:'bar',data:{labels:lbl,datasets:vis.map(function(c){var i=codes.indexOf(c);return {label:_sfName(c),data:mos.map(function(m){return SF_VOL[m][c]||0;}),backgroundColor:c==='BR'?'#16a34a':SF_COLS[(i+1)%SF_COLS.length],stack:'s'};})},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:LEGEND_OPTS},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true,ticks:{font:{size:9}}}},animation:{duration:300}}});
   var te=document.getElementById('cty_sf_t');
   if(te){
     var colTot=mos.map(function(m){return vis.reduce(function(s,c){return s+(SF_VOL[m][c]||0);},0);});
     var grand=colTot.reduce(function(a,b){return a+b;},0);
-    te.innerHTML='<table class="dt"><thead><tr><th style="text-align:left">País</th>'+lbl.map(function(l){return '<th>'+l+'</th>';}).join('')+'<th>Total</th><th>% do total</th></tr></thead><tbody>'+
+    te.innerHTML='<table class="dt"><thead><tr><th style="text-align:left">'+cX('País','Country')+'</th>'+lbl.map(function(l){return '<th>'+l+'</th>';}).join('')+'<th>Total</th><th>'+cX('% do total','% of total')+'</th></tr></thead><tbody>'+
       vis.map(function(c){var t=mos.reduce(function(s,m){return s+(SF_VOL[m][c]||0);},0);
-        return '<tr><td style="text-align:left;font-weight:600">'+(SF_NAMES[c]||c)+'</td>'+mos.map(function(m){return '<td>'+((SF_VOL[m][c]||0)?fmtVol(SF_VOL[m][c]):'–')+'</td>';}).join('')+'<td style="font-weight:700">'+fmtVol(t)+'</td><td>'+fmtPct(_ctyRate(t,grand))+'</td></tr>';}).join('')+
-      '<tr style="font-weight:700;border-top:2px solid #e5e7eb"><td style="text-align:left">Total</td>'+colTot.map(function(v){return '<td>'+fmtVol(v)+'</td>';}).join('')+'<td>'+fmtVol(grand)+'</td><td>100%</td></tr></tbody></table>';
+        return '<tr><td style="text-align:left;font-weight:600">'+_sfName(c)+'</td>'+mos.map(function(m){return '<td>'+((SF_VOL[m][c]||0)?cV(SF_VOL[m][c]):'–')+'</td>';}).join('')+'<td style="font-weight:700">'+cV(t)+'</td><td>'+cP(_ctyRate(t,grand))+'</td></tr>';}).join('')+
+      '<tr style="font-weight:700;border-top:2px solid #e5e7eb"><td style="text-align:left">Total</td>'+colTot.map(function(v){return '<td>'+cV(v)+'</td>';}).join('')+'<td>'+cV(grand)+'</td><td>100%</td></tr></tbody></table>';
   }
 }
-
 var EXEC_RANK={mo:'2026-10',minBig:10,minSmall:5,big:[{"n":"Marina Correa","c":"BR","v":27,"r":17,"rej":22,"rate":63,"d":"02/10, 07/10, 09/10, 14/10 (x2), 15/10, 16/10 (x3), 20/10, 21/10, 22/10 (x5), 28/10"},{"n":"Juan Salvagni","c":"ES","v":22,"r":13,"rej":23,"rate":59.1,"d":"02/10, 13/10 (x4), 16/10, 23/10, 26/10, 27/10, 28/10 (x2), 29/10 (x2)"},{"n":"Maria Luiza Macedo","c":"BR","v":35,"r":20,"rej":21,"rate":57.1,"d":"01/10 (x2), 07/10, 08/10, 09/10 (x2), 14/10, 20/10, 21/10, 22/10, 26/10 (x2), 27/10 (x5), 30/10 (x3)"},{"n":"Bruna Cavalcanti","c":"BR","v":11,"r":6,"rej":6,"rate":54.5,"d":"06/10, 15/10, 27/10 (x3), 30/10"},{"n":"Flavia Menezes","c":"BR","v":21,"r":11,"rej":12,"rate":52.4,"d":"01/10 (x2), 02/10, 05/10, 06/10, 15/10, 23/10, 26/10 (x2), 27/10, 28/10"},{"n":"Aline Rodrigues1","c":"BR","v":25,"r":13,"rej":19,"rate":52,"d":"02/10 (x3), 07/10, 09/10, 14/10 (x3), 26/10, 27/10 (x2), 29/10, 30/10"},{"n":"Jimena Moreira","c":"ES","v":10,"r":5,"rej":8,"rate":50,"d":"13/10, 16/10, 26/10, 29/10, 30/10"},{"n":"Beatriz Ribeiro","c":"BR","v":100,"r":48,"rej":79,"rate":48,"d":"01/10, 02/10 (x6), 05/10, 06/10 (x2), 07/10, 08/10 (x5), 09/10 (x3), 12/10, 13/10 (x4), 14/10 (x2), 15/10 (x2), 16/10 (x3), 19/10 (x3), 20/10 (x3), 21/10 (x2), 23/10 (x2), 26/10, 27/10 (x3), 28/10 (x2), 29/10"},{"n":"Raissa Belo","c":"BR","v":25,"r":12,"rej":17,"rate":48,"d":"06/10 (x4), 08/10, 13/10 (x2), 15/10, 20/10 (x2), 23/10, 27/10"},{"n":"Laura Tuyama","c":"BR","v":11,"r":5,"rej":9,"rate":45.5,"d":"14/10, 20/10, 22/10, 26/10 (x2)"}],small:[{"n":"Ross Mcculloch","c":"GB","v":6,"r":4,"rej":11,"rate":66.7,"d":"14/10, 16/10, 20/10, 26/10"},{"n":"Simona Cammarata","c":"IT","v":14,"r":8,"rej":16,"rate":57.1,"d":"05/10, 08/10, 09/10, 13/10, 14/10, 26/10, 29/10 (x2)"},{"n":"Liza Hernandez","c":"MX","v":13,"r":6,"rej":9,"rate":46.2,"d":"02/10, 06/10, 09/10, 26/10, 29/10, 30/10"},{"n":"Florencia Micoli","c":"AR","v":11,"r":5,"rej":8,"rate":45.5,"d":"07/10, 13/10 (x2), 16/10, 28/10"},{"n":"Beatriz Ribeiro","c":"MX","v":13,"r":4,"rej":5,"rate":30.8,"d":"13/10, 26/10, 27/10, 29/10"}],bigC:'BR, DE, ES, US',smallC:'AR, CA, CL, GB, IT, MX, NL, PT, RO'};
 var EXEC_ALL=[["G","Philipp Mueller-rees","DE",4,4,7,100,"20/10 (x2), 21/10, 22/10"],["G","Bruno Rein","ES",3,3,7,100,"01/10, 07/10, 28/10"],["G","Larissa Costa","BR",3,3,6,100,"02/10, 09/10, 27/10"],["G","Gabriella Martone","US",3,3,5,100,"07/10, 16/10, 20/10"],["G","Alejandra Gonzalez","US",1,1,4,100,"07/10"],["G","Austin Wern","US",1,1,4,100,"01/10"],["G","Brian Rekuc","US",2,2,3,100,"27/10, 28/10"],["G","Guilherme Oliveira","BR",2,2,3,100,"01/10 (x2)"],["G","Logan Almeida","US",1,1,3,100,"28/10"],["G","Natalia Souza","BR",1,1,3,100,"09/10"],["G","Carolina Durville","BR",2,2,2,100,"23/10, 28/10"],["G","Jack Korosy","US",2,2,2,100,"22/10, 23/10"],["G","Tim Kerger","DE",2,2,2,100,"08/10, 30/10"],["G","Martha Jimenez","DE",2,2,2,100,"02/10, 29/10"],["G","Claudio Sander","BR",2,2,2,100,"05/10, 06/10"],["G","Larissa Contieri","BR",2,2,2,100,"21/10, 27/10"],["G","Kevin Pereira","BR",2,2,2,100,"15/10, 23/10"],["G","Antonio Bento","BR",2,2,2,100,"13/10, 16/10"],["G","Renan Masson","BR",1,1,2,100,"06/10"],["G","Sofia Herranz","ES",1,1,2,100,"08/10"],["G","Javier Rodriguez","ES",1,1,2,100,"26/10"],["G","Danielle Waters","US",1,1,2,100,"02/10"],["G","Samantha Ferrigno","ES",1,1,2,100,"22/10"],["G","Flavio Neto","BR",1,1,2,100,"05/10"],["G","Siomara Rosa","BR",1,1,2,100,"01/10"],["G","Guilherme Guimaraes","BR",1,1,1,100,"14/10"],["G","Amanda Ferreira","BR",1,1,1,100,"07/10"],["G","Alexander Gaertner","DE",1,1,1,100,"30/10"],["G","Matheus Paschoalin","BR",1,1,1,100,"02/10"],["G","Samuel Fernandez","US",1,1,1,100,"21/10"],["G","Sidney Polycarpe","US",1,1,1,100,"15/10"],["G","Mara Shear","US",1,1,1,100,"22/10"],["G","Roman Bauer","DE",1,1,1,100,"06/10"],["G","Shaina Hecht","US",1,1,1,100,"29/10"],["G","Merlin Neal","US",1,1,1,100,"29/10"],["G","Veronica Garcia","BR",1,1,1,100,"05/10"],["G","Rennata Souza","BR",1,1,1,100,"21/10"],["G","Joseane Costa","BR",1,1,1,100,"20/10"],["G","Celso Ribeiro","BR",1,1,1,100,"22/10"],["G","Aline Maffei","BR",1,1,1,100,"30/10"],["G","Ana Olegini","BR",1,1,1,100,"15/10"],["G","Francisco Tome","ES",1,1,1,100,"29/10"],["G","Diego Garcia","ES",1,1,1,100,"29/10"],["G","Xabier Zaratiegui","ES",1,1,1,100,"14/10"],["G","Julian Schulz","DE",8,7,11,87.5,"07/10, 14/10, 20/10, 22/10, 26/10, 27/10, 29/10"],["G","Beatriz Ribeiro","ES",12,10,19,83.3,"01/10, 02/10, 08/10, 12/10, 14/10, 19/10, 27/10 (x2), 28/10, 29/10"],["G","Emma Jett","US",8,6,7,75,"02/10, 09/10, 13/10, 14/10, 28/10, 30/10"],["G","Kristen Salas","US",8,6,6,75,"03/10, 27/10, 28/10, 29/10, 30/10 (x2)"],["G","Anna Hust","DE",4,3,6,75,"01/10, 12/10, 15/10"],["G","Katrin Hoefer","DE",4,3,6,75,"29/10 (x2), 30/10"],["G","Ana Salesi","BR",4,3,5,75,"08/10, 14/10, 26/10"],["G","Bruna Mendes","BR",4,3,5,75,"06/10, 08/10, 30/10"],["G","Fernanda Alves","BR",4,3,3,75,"01/10, 20/10, 21/10"],["G","Samara Nogueira","BR",4,3,3,75,"05/10, 21/10 (x2)"],["G","Jackeliny Gregorio","BR",4,3,3,75,"16/10 (x2), 29/10"],["G","Beatriz Ribeiro","DE",7,5,10,71.4,"02/10 (x2), 21/10, 23/10, 28/10"],["G","Gustavo Pinheiro","BR",7,5,6,71.4,"05/10, 06/10, 07/10, 09/10 (x2)"],["G","Vivien Lehnert","DE",3,2,4,66.7,"15/10 (x2)"],["G","Aline Santana","BR",3,2,3,66.7,"21/10, 22/10"],["G","Daniele Aguiar","BR",3,2,2,66.7,"01/10, 28/10"],["G","Victoria Mossini","BR",3,2,2,66.7,"08/10, 13/10"],["G","Marcelo Warcman","BR",3,2,2,66.7,"01/10, 27/10"],["G","Webert Dutra","BR",3,2,2,66.7,"08/10, 29/10"],["G","Kailane Gouveia","BR",3,2,2,66.7,"21/10, 23/10"],["G","Graziella Ferrari","BR",3,2,2,66.7,"01/10 (x2)"],["G","Marina Correa","BR",27,17,22,63,"02/10, 07/10, 09/10, 14/10 (x2), 15/10, 16/10 (x3), 20/10, 21/10, 22/10 (x5), 28/10"],["G","Juan Salvagni","ES",22,13,23,59.1,"02/10, 13/10 (x4), 16/10, 23/10, 26/10, 27/10, 28/10 (x2), 29/10 (x2)"],["G","Maria Luiza Macedo","BR",35,20,21,57.1,"01/10 (x2), 07/10, 08/10, 09/10 (x2), 14/10, 20/10, 21/10, 22/10, 26/10 (x2), 27/10 (x5), 30/10 (x3)"],["G","Bruna Cavalcanti","BR",11,6,6,54.5,"06/10, 15/10, 27/10 (x3), 30/10"],["G","Debora Brandi","BR",13,7,7,53.8,"02/10, 09/10 (x2), 13/10 (x2), 14/10, 15/10"],["G","Flavia Menezes","BR",21,11,12,52.4,"01/10 (x2), 02/10, 05/10, 06/10, 15/10, 23/10, 26/10 (x2), 27/10, 28/10"],["G","Aline Rodrigues1","BR",25,13,19,52,"02/10 (x3), 07/10, 09/10, 14/10 (x3), 26/10, 27/10 (x2), 29/10, 30/10"],["G","Paige Venancio","US",8,4,12,50,"01/10 (x2), 13/10, 26/10"],["G","Jimena Moreira","ES",10,5,8,50,"13/10, 16/10, 26/10, 29/10, 30/10"],["G","Julia Albuquerque","US",6,3,5,50,"06/10, 09/10, 15/10"],["G","Fabian Kaempf","DE",2,1,4,50,"09/10"],["G","Bruna Silva","BR",2,1,3,50,"05/10"],["G","Maria Guillen","ES",2,1,3,50,"20/10"],["G","Priscila Warsch","BR",4,2,2,50,"13/10, 23/10"],["G","Giovanna Maciel","BR",2,1,2,50,"27/10"],["G","Ainhoa Rodriguez","ES",2,1,2,50,"23/10"],["G","Renata Chiossi","BR",2,1,2,50,"01/10"],["G","Melanie Albornoz","BR",2,1,2,50,"19/10"],["G","Liza Hernandez","US",2,1,1,50,"28/10"],["G","Ketleen Costa","BR",2,1,1,50,"23/10"],["G","Taylor Fetzer","US",2,1,1,50,"01/10"],["G","Isabela Patricio","BR",2,1,1,50,"08/10"],["G","Nathalia Dias","BR",2,1,1,50,"29/10"],["G","Fernanda Martins","BR",2,1,1,50,"07/10"],["G","Stephanie Guenther","DE",2,1,1,50,"14/10"],["G","Tatiana Kobayashi","BR",2,1,1,50,"05/10"],["G","Mayara Cortes","BR",2,1,1,50,"30/10"],["G","Amanda Figueredo Ornelas","BR",2,1,1,50,"20/10"],["G","Matheus Medeiros","BR",2,1,1,50,"26/10"],["G","Raissa Belo","BR",25,12,17,48,"06/10 (x4), 08/10, 13/10 (x2), 15/10, 20/10 (x2), 23/10, 27/10"],["G","Laura Tuyama","BR",11,5,9,45.5,"14/10, 20/10, 22/10, 26/10 (x2)"],["G","Arthur Barbosa","BR",18,8,11,44.4,"07/10, 08/10, 15/10, 19/10, 23/10 (x2), 29/10, 30/10"],["G","Christina Maunz","DE",9,4,7,44.4,"06/10, 08/10, 15/10, 30/10"],["G","Beatriz Ribeiro","BR",76,32,48,42.1,"02/10 (x3), 05/10, 06/10 (x2), 07/10, 08/10 (x4), 09/10 (x3), 13/10 (x4), 14/10, 15/10 (x2), 16/10 (x3), 19/10 (x2), 20/10 (x3), 21/10, 23/10, 27/10"],["G","Larissa Santana","BR",140,58,67,41.4,"01/10 (x3), 05/10, 06/10 (x8), 07/10 (x10), 08/10 (x2), 13/10 (x2), 14/10 (x2), 15/10 (x3), 16/10 (x9), 19/10 (x3), 21/10, 22/10 (x3), 26/10, 27/10, 30/10 (x9)"],["G","Larissa Giovana","BR",17,7,10,41.2,"19/10, 20/10, 21/10, 22/10, 23/10 (x2), 29/10"],["G","Fernanda Coelho","BR",5,2,3,40,"01/10, 08/10"],["G","Camila machado","BR",5,2,3,40,"13/10, 28/10"],["G","Melis Oezer","DE",5,2,3,40,"01/10 (x2)"],["G","Andrea Rodriguez","US",5,2,2,40,"16/10 (x2)"],["G","Elisandra Bonini","BR",37,14,17,37.8,"01/10 (x3), 05/10, 07/10, 08/10, 13/10, 22/10, 23/10 (x3), 27/10 (x2), 30/10"],["G","Rebeca Motta","BR",11,4,6,36.4,"23/10, 26/10, 27/10, 29/10"],["G","Joyce Falcao","BR",15,5,5,33.3,"01/10, 07/10, 15/10, 16/10, 27/10"],["G","Luiz Almeida","BR",9,3,4,33.3,"15/10, 23/10, 27/10"],["G","aliaksandr karpovich","DE",6,2,2,33.3,"13/10, 28/10"],["G","Debora Brandi","DE",6,2,2,33.3,"14/10, 19/10"],["G","Marcelo Maximo","BR",6,2,2,33.3,"14/10, 16/10"],["G","Silvia Seras","BR",6,2,2,33.3,"07/10, 22/10"],["G","Leonardo Galante","BR",3,1,2,33.3,"06/10"],["G","Carolina Victorino","BR",3,1,2,33.3,"01/10"],["G","Fuad Sadeghi","US",3,1,1,33.3,"26/10"],["G","Talita Donato","BR",3,1,1,33.3,"23/10"],["G","Michelle Fineza","BR",3,1,1,33.3,"13/10"],["G","Olivia Pino","US",3,1,1,33.3,"23/10"],["G","Debora Juliano","BR",3,1,1,33.3,"26/10"],["G","Nathalia Jardim Palmieri","US",3,1,1,33.3,"09/10"],["G","Danyele Carmo","BR",52,16,30,30.8,"01/10, 02/10 (x5), 07/10, 08/10 (x3), 09/10, 16/10, 20/10, 22/10 (x3)"],["G","Barbara Bueno","BR",13,4,5,30.8,"01/10, 02/10, 14/10, 16/10"],["G","Karina Gaiot","BR",186,57,76,30.6,"01/10, 02/10 (x14), 05/10 (x2), 07/10 (x8), 08/10, 13/10 (x2), 14/10 (x4), 15/10 (x2), 19/10 (x4), 20/10, 21/10, 22/10 (x2), 23/10 (x2), 26/10 (x4), 28/10 (x3), 29/10 (x5), 30/10"],["G","Edson Oliveira","BR",10,3,4,30,"02/10, 15/10, 27/10"],["G","Damian Valdez","US",23,6,9,26.1,"06/10 (x2), 08/10, 09/10, 15/10, 16/10"],["G","Rita Alencar","BR",24,6,7,25,"02/10, 05/10 (x2), 08/10, 29/10, 30/10"],["G","Iris Carvalho","BR",12,3,3,25,"02/10, 13/10, 20/10"],["G","Karine Matos","BR",4,1,1,25,"15/10"],["G","Vitor Ferreira","BR",17,4,4,23.5,"20/10, 21/10, 30/10 (x2)"],["G","Edson Lima","BR",53,12,14,22.6,"01/10 (x2), 02/10 (x3), 06/10, 07/10 (x2), 21/10, 26/10, 29/10 (x2)"],["G","Beatriz Ribeiro","US",5,1,2,20,"26/10"],["G","Daniela Minatogau","BR",5,1,1,20,"19/10"],["G","Luize Santos","BR",106,18,19,17,"01/10, 06/10 (x2), 07/10 (x2), 08/10, 13/10, 14/10, 16/10 (x2), 19/10 (x2), 26/10, 28/10, 29/10 (x2), 30/10 (x2)"],["G","Mailla Aquino","ES",6,1,1,16.7,"19/10"],["G","Debora Brandi","ES",19,3,3,15.8,"06/10 (x2), 19/10"],["G","Jenna Sparano","US",7,1,2,14.3,"05/10"],["G","Anthony Urcinoli","US",7,1,2,14.3,"02/10"],["G","Mailla Aquino","DE",7,1,1,14.3,"19/10"],["G","Tiago Fauser","BR",45,5,6,11.1,"08/10, 13/10, 16/10 (x2), 20/10"],["G","Nicole Louise","BR",12,1,3,8.3,"14/10"],["G","Paula Menezes","BR",181,14,16,7.7,"01/10 (x3), 08/10, 13/10, 20/10, 21/10 (x2), 26/10, 27/10 (x2), 30/10 (x3)"],["G","Caique Paula","US",14,1,1,7.1,"06/10"],["G","Danilo Santiago","BR",84,4,4,4.8,"02/10 (x2), 05/10, 21/10"],["G","Josinete Silva","BR",42,2,3,4.8,"23/10, 30/10"],["P","Rodrigo Urreola","MX",2,2,5,100,"01/10, 29/10"],["P","Sophie Lancer","GB",3,3,3,100,"02/10, 09/10, 26/10"],["P","Mohammed Bouzeryouh","GB",1,1,3,100,"07/10"],["P","Federico Opocher","IT",2,2,2,100,"03/10, 26/10"],["P","Diana Feliu","MX",1,1,2,100,"07/10"],["P","Giovanni Paolicelli","IT",1,1,2,100,"01/10"],["P","Nathan Horn","GB",1,1,1,100,"22/10"],["P","Matthew Fertig","GB",1,1,1,100,"01/10"],["P","Melanie Albornoz","MX",1,1,1,100,"26/10"],["P","Juan Salvagni","IT",1,1,1,100,"26/10"],["P","Areli Giacoman","MX",1,1,1,100,"13/10"],["P","Mailla Aquino","IT",1,1,1,100,"19/10"],["P","Paulina Sanchez","MX",1,1,1,100,"07/10"],["P","Ignacio Gutierrez","CL",1,1,1,100,"23/10"],["P","Ross Mcculloch","GB",6,4,11,66.7,"14/10, 16/10, 20/10, 26/10"],["P","Madalina Gavrila","RO",3,2,2,66.7,"26/10 (x2)"],["P","Beatriz Ribeiro","AR",3,2,2,66.7,"26/10, 27/10"],["P","Simone Moscatelli","IT",3,2,2,66.7,"02/10, 27/10"],["P","Vitor Rocha","PT",3,2,2,66.7,"09/10, 16/10"],["P","Simona Cammarata","IT",14,8,16,57.1,"05/10, 08/10, 09/10, 13/10, 14/10, 26/10, 29/10 (x2)"],["P","Debora Brandi","MX",4,2,5,50,"02/10, 15/10"],["P","Monserrat Gervacio","MX",4,2,2,50,"02/10, 22/10"],["P","Liza Hernandez","AR",2,1,2,50,"09/10"],["P","Gemma Jones","GB",2,1,1,50,"01/10"],["P","Kirsten Smeink","NL",2,1,1,50,"29/10"],["P","Paula Bogdan","RO",2,1,1,50,"23/10"],["P","Narcis Draghici","RO",2,1,1,50,"08/10"],["P","Tania Mejia","MX",2,1,1,50,"30/10"],["P","Florencia Micoli","AR",11,5,8,45.5,"07/10, 13/10 (x2), 16/10, 28/10"],["P","Liza Hernandez","MX",11,5,7,45.5,"02/10, 06/10, 26/10, 29/10, 30/10"],["P","Claudia Hurtado","AR",12,4,4,33.3,"20/10 (x2), 28/10 (x2)"],["P","Gabriella Martone","GB",3,1,1,33.3,"26/10"],["P","Manuel Fernandez","CL",3,1,1,33.3,"01/10"],["P","Twan Siegers","NL",3,1,1,33.3,"16/10"],["P","Liana Bezerra","MX",3,1,1,33.3,"01/10"],["P","Beatriz Ribeiro","MX",9,2,3,22.2,"13/10, 29/10"],["P","Casey Berry","GB",10,2,2,20,"13/10, 20/10"],["P","Cornelia Pascu","RO",13,2,3,15.4,"15/10, 19/10"]];
 function _csvQ(v){v=String(v==null?'':v);return /[;"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
 async function ctyExecDownload(){
-  var X=EXEC_RANK,pos={G:0,P:0};
-  var lines=[['Posição no grupo (por taxa)','Grupo','Executivo','País','Opps enviados','Opps rejeitados','Rejeições (ciclos)','Taxa de rejeição (%)','Datas dos pedidos rejeitados (dia/mês)'].map(_csvQ).join(';')];
-  EXEC_ALL.forEach(function(r){pos[r[0]]++;lines.push([pos[r[0]],r[0]==='G'?'Países com mais de 50 opps':'Países com até 50 opps',r[1],r[2],r[3],r[4],r[5],String(r[6]).replace('.',','),r[7]].map(_csvQ).join(';'));});
-  var csv='\uFEFF'+lines.join('\r\n'),name='executivos_rejeicao_'+X.mo+'.csv',m=document.getElementById('cty_exec_msg');
+  var XR=EXEC_RANK,pos={G:0,P:0};
+  var lines=[[cX('Posição no grupo (por taxa)','Position in group (by rate)'),cX('Grupo','Group'),cX('Executivo','Executive'),cX('País','Country'),cX('Opps enviados','Opps submitted'),cX('Opps rejeitados','Rejected opps'),cX('Rejeições (ciclos)','Rejections (cycles)'),cX('Taxa de rejeição (%)','Rejection rate (%)'),cX('Datas dos pedidos rejeitados (dia/mês)','Dates of rejected requests (day/month)')].map(_csvQ).join(';')];
+  EXEC_ALL.forEach(function(r){pos[r[0]]++;lines.push([pos[r[0]],r[0]==='G'?cX('Países com mais de 50 opps','Countries with more than 50 opps'):cX('Países com até 50 opps','Countries with up to 50 opps'),r[1],r[2],r[3],r[4],r[5],cDP(r[6]),r[7]].map(_csvQ).join(';'));});
+  var csv='\uFEFF'+lines.join('\r\n'),name=cX('executivos_rejeicao_','executives_rejection_')+XR.mo+'.csv',m=document.getElementById('cty_exec_msg');
   function say(t){if(m)m.textContent=t;}
   try{
     if(window.claude&&window.claude.use){
       var dl=await window.claude.use('downloads');
-      if(!dl){say('Download indisponível nesta visualização. Abra a página no claude.ai ou peça o arquivo ao Thiago.');return;}
-      await dl.save({filename:name,data:csv});say('Arquivo gerado: '+name);return;
+      if(!dl){say(cX('Download indisponível nesta visualização. Abra a página no claude.ai ou peça o arquivo ao Thiago.','Download unavailable in this view. Open the page on claude.ai or ask Thiago for the file.'));return;}
+      await dl.save({filename:name,data:csv});say(cX('Arquivo gerado: ','File generated: ')+name);return;
     }
     var b=new Blob([csv],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');
-    a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);say('Arquivo gerado: '+name);
-  }catch(e){if(!(e&&e.code==='declined'))say('Não foi possível gerar o arquivo.');}
+    a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);say(cX('Arquivo gerado: ','File generated: ')+name);
+  }catch(e){if(!(e&&e.code==='declined'))say(cX('Não foi possível gerar o arquivo.','Could not generate the file.'));}
 }
 var _exSort={k:'rate',d:-1};
-var _EX_COLS=[['n','Executivo (A–Z)'],['c','País'],['v','Opps enviados'],['r','Opps rejeitados'],['rej','Rejeições (ciclos)'],['rate','Taxa de rejeição']];
+function _exCols(){return [['n',cX('Executivo (A–Z)','Executive (A–Z)')],['c',cX('País','Country')],['v',cX('Opps enviados','Opps submitted')],['r',cX('Opps rejeitados','Rejected opps')],['rej',cX('Rejeições (ciclos)','Rejections (cycles)')],['rate',cX('Taxa de rejeição','Rejection rate')]];}
 function exSort(k){if(_exSort.k===k)_exSort.d=-_exSort.d;else{_exSort.k=k;_exSort.d=(k==='n'||k==='c')?1:-1;}rTCtyExec();}
 function exDir(){_exSort.d=-_exSort.d;rTCtyExec();}
-function exBar(){var ck=_exSort.k,cd=_exSort.d;return '<div style="margin:6px 0 4px;font-size:.72rem;color:#6b7280">Ordenar por <select onchange="exSort(this.value)" style="font-size:.72rem;padding:3px 6px;border:1px solid #d1d5db;border-radius:6px">'+_EX_COLS.map(function(c){return '<option value="'+c[0]+'"'+(ck===c[0]?' selected':'')+'>'+c[1]+'</option>';}).join('')+'</select> <button class="vtog2" onclick="exDir()">'+(cd<0?'Maior primeiro ▼':'Menor primeiro ▲')+'</button> <span style="margin-left:6px">Padrão: taxa de rejeição. Dá para ordenar clicando nos títulos das colunas.</span></div>';}
+function exBar(){var ck=_exSort.k,cd=_exSort.d;return '<div style="margin:6px 0 4px;font-size:.72rem;color:#6b7280">'+cX('Ordenar por','Sort by')+' <select onchange="exSort(this.value)" style="font-size:.72rem;padding:3px 6px;border:1px solid #d1d5db;border-radius:6px">'+_exCols().map(function(c){return '<option value="'+c[0]+'"'+(ck===c[0]?' selected':'')+'>'+c[1]+'</option>';}).join('')+'</select> <button class="vtog2" onclick="exDir()">'+(cd<0?cX('Maior primeiro ▼','Highest first ▼'):cX('Menor primeiro ▲','Lowest first ▲'))+'</button> <span style="margin-left:6px">'+cX('Padrão: taxa de rejeição. Dá para ordenar clicando nos títulos das colunas.','Default: rejection rate. You can also sort by clicking the column headers.')+'</span></div>';}
 function exTh(k,l,left){var a=_exSort.k===k?(_exSort.d<0?' ▼':' ▲'):'';return '<th style="cursor:pointer'+(left?';text-align:left':'')+'" onclick="exSort(\''+k+'\')">'+l+a+'</th>';}
 function rTCtyExec(){
-  var X=(typeof EXEC_RANK!=='undefined')?EXEC_RANK:null;var el=document.getElementById('cty_exec_t');if(!el||!X||typeof EXEC_ALL==='undefined')return;
+  var XR=(typeof EXEC_RANK!=='undefined')?EXEC_RANK:null;var el=document.getElementById('cty_exec_t');if(!el||!XR||typeof EXEC_ALL==='undefined')return;
   var LIM=25,MINV=5,vis=EXEC_ALL.filter(function(r){return (_ctyC.size===0||_ctyC.has(cn(r[2])))&&(_ctyR.size===0||_ctyR.has(rg(r[2])));}),hid=vis.filter(function(r){return r[6]>LIM&&r[3]<MINV;}).length;
   function cn(c){return SF_NAMES[c]||c;}
   function rg(c){var n=cn(c);for(var i=0;i<COUNTRY_DATA.length;i++)if(COUNTRY_DATA[i].c===n)return COUNTRY_DATA[i].reg;return null;}
@@ -960,17 +956,20 @@ function rTCtyExec(){
     var rows=vis.filter(function(r){return r[0]===g&&r[6]>LIM&&r[3]>=MINV;});
     var ek=_exSort.k,ed=_exSort.d,ix={n:1,c:2,v:3,r:4,rej:5,rate:6}[ek];
     rows.sort(function(a,b){var x=(ek==='n'||ek==='c')?String(a[ix]).localeCompare(String(b[ix])):a[ix]-b[ix];if(x!==0)return x*ed;return (b[6]-a[6])||(b[3]-a[3]);});
-    return '<div style="font-weight:700;font-size:.8rem;color:#374151;margin:10px 0 2px">'+title+' <span style="color:#dc2626">('+rows.length+' executivos)</span></div><div style="font-size:.7rem;color:#6b7280;margin-bottom:6px">'+sub+'</div>'+
-    '<div style="overflow-x:auto"><table class="dt"><thead><tr><th>#</th>'+exTh('n','Executivo',1)+exTh('c','País')+exTh('v','Opps enviados')+exTh('r','Opps rejeitados')+exTh('rej','Rejeições (ciclos)')+exTh('rate','Taxa')+'<th style="text-align:left">Datas dos pedidos rejeitados (dia/mês)</th></tr></thead><tbody>'+
-    rows.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="font-weight:600;text-align:left">'+r[1]+'</td><td>'+r[2]+'</td><td>'+fmtVol(r[3])+'</td><td>'+fmtVol(r[4])+'</td><td style="font-weight:700">'+fmtVol(r[5])+'</td><td style="color:'+rejClr(r[6])+';font-weight:700">'+fmtPct(r[6])+'</td><td style="text-align:left;font-size:.68rem;color:#6b7280;min-width:260px;white-space:normal">'+r[7]+'</td></tr>';}).join('')+'</tbody></table></div>';
+    return '<div style="font-weight:700;font-size:.8rem;color:#374151;margin:10px 0 2px">'+title+' <span style="color:#dc2626">('+rows.length+cX(' executivos)',' executives)')+'</span></div><div style="font-size:.7rem;color:#6b7280;margin-bottom:6px">'+sub+'</div>'+
+    '<div style="overflow-x:auto"><table class="dt"><thead><tr><th>#</th>'+exTh('n',cX('Executivo','Executive'),1)+exTh('c',cX('País','Country'))+exTh('v',cX('Opps enviados','Opps submitted'))+exTh('r',cX('Opps rejeitados','Rejected opps'))+exTh('rej',cX('Rejeições (ciclos)','Rejections (cycles)'))+exTh('rate',cX('Taxa','Rate'))+'<th style="text-align:left">'+cX('Datas dos pedidos rejeitados (dia/mês)','Dates of rejected requests (day/month)')+'</th></tr></thead><tbody>'+
+    rows.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td style="font-weight:600;text-align:left">'+r[1]+'</td><td>'+r[2]+'</td><td>'+cV(r[3])+'</td><td>'+cV(r[4])+'</td><td style="font-weight:700">'+cV(r[5])+'</td><td style="color:'+rejClr(r[6])+';font-weight:700">'+cP(r[6])+'</td><td style="text-align:left;font-size:.68rem;color:#6b7280;min-width:260px;white-space:normal">'+r[7]+'</td></tr>';}).join('')+'</tbody></table></div>';
   }
-  el.innerHTML=exBar()+tbl('G','Países com mais de 50 opps no mês ('+X.bigC+')','Executivos com taxa de rejeição acima de '+LIM+'% e no mínimo '+MINV+' opps enviados em '+gMLBL(X.mo)+'.')+
-    tbl('P','Países com até 50 opps no mês ('+X.smallC+')','Executivos com taxa de rejeição acima de '+LIM+'% e no mínimo '+MINV+' opps enviados em '+gMLBL(X.mo)+'.')+
-    '<div style="font-size:.68rem;color:#9ca3af;margin-top:8px">'+hid+' executivos com taxa acima de '+LIM+'% e menos de '+MINV+' opps enviados não aparecem aqui (a taxa oscila muito com amostra pequena); estão no CSV. Executivo = dono do opp no Salesforce. Data = data do pedido ao DD (o export não traz a data de cada rejeição); (x2) = mais de um pedido no mesmo dia. Quem tem opps em mais de um país aparece uma vez por país, com a taxa daquele país. A lista acompanha os filtros de país e região acima.</div>';
+  var sub=cX('Executivos com taxa de rejeição acima de '+LIM+'% e no mínimo '+MINV+' opps enviados em '+gMLBL(XR.mo)+'.','Executives with a rejection rate above '+LIM+'% and at least '+MINV+' opps submitted in '+gMLBL(XR.mo)+'.');
+  el.innerHTML=exBar()+tbl('G',cX('Países com mais de 50 opps no mês (','Countries with more than 50 opps in the month (')+XR.bigC+')',sub)+
+    tbl('P',cX('Países com até 50 opps no mês (','Countries with up to 50 opps in the month (')+XR.smallC+')',sub)+
+    '<div style="font-size:.68rem;color:#9ca3af;margin-top:8px">'+cX(hid+' executivos com taxa acima de '+LIM+'% e menos de '+MINV+' opps enviados não aparecem aqui (a taxa oscila muito com amostra pequena); estão no CSV. Executivo = dono do opp no Salesforce. Data = data do pedido ao DD (o export não traz a data de cada rejeição); (x2) = mais de um pedido no mesmo dia. Quem tem opps em mais de um país aparece uma vez por país, com a taxa daquele país. A lista acompanha os filtros de país e região acima.',hid+' executives with a rate above '+LIM+'% and fewer than '+MINV+' opps submitted are not shown here (the rate swings widely on small samples); they are in the CSV. Executive = opp owner in Salesforce. Date = date of the request to DD (the export does not carry the date of each rejection); (x2) = more than one request on the same day. Anyone with opps in more than one country appears once per country, with that country\'s rate. The list follows the country filter above.')+'</div>';
 }
 function _ctyRate(a,b){return b>0?Math.round(a/b*1000)/10:0;}
-function _ctyH(h){return Math.round(h).toLocaleString('pt-BR')+'h';}
-function _ctyD(h){return (Math.round(h/8*10)/10).toLocaleString('pt-BR')+' dias úteis';}
+function _ctyH(h){return Math.round(h).toLocaleString(cLOC())+'h';}
+function _ctyDn(h){return (Math.round(h/8*10)/10).toLocaleString(cLOC());}
+function _ctyD(h){return _ctyDn(h)+' '+cX('dias úteis','working days');}
+function _ctyDs(h){return _ctyDn(h)+'d';}
 function _ctySum(rows){
   var s={v:0,a:0,r:0,rej:0,n1:0,n2:0,n3:0,rh:0};
   rows.forEach(function(d){s.v+=d.v;s.a+=d.a;s.r+=d.r;s.rej+=d.rej;s.n1+=d.n1;s.n2+=d.n2;s.n3+=d.n3;s.rh+=d.rh;});
@@ -987,8 +986,8 @@ function ctyToggle(kind,val){
 function _ctyRegC(r){var m={};COUNTRY_DATA.forEach(function(d){if(!d.c)return;(m[d.c]=m[d.c]||{})[d.reg]=(m[d.c][d.reg]||0)+d.v;});return Object.keys(m).filter(function(c){var best=null;Object.keys(m[c]).forEach(function(g){if(best===null||m[c][g]>m[c][best])best=g;});return (c==='Belgium'||c==='Romania')?r==='Europe':best===r;});}
 function _ctyChips(kind,vals,sel){
   if(kind==='r'){return vals.filter(function(v){return _ctyRegC(v).length>0;}).map(function(v){var cs=_ctyRegC(v),on=cs.length>0&&_ctyC.size===cs.length&&cs.every(function(x){return _ctyC.has(x);});return '<button class="vtog2'+(on?' on':'')+'" style="'+(on?'background:#C1275D;color:#fff;border-color:#C1275D;':'')+'" onclick="ctyToggle(\'r\',\''+v+'\')">'+v+'</button> ';}).join('');}
-  var h='<button class="vtog2'+(sel.size===0?' on':'')+'" style="'+(sel.size===0?'background:#C1275D;color:#fff;border-color:#C1275D;':'')+'" onclick="ctyToggle(\''+kind+'\',\'\')">Todos</button> ';
-  if(kind==='c'){var nb=vals.filter(function(x){return x!=='Brazil';});var nbOn=sel.size===nb.length&&nb.every(function(x){return sel.has(x);});h+='<button class="vtog2'+(nbOn?' on':'')+'" style="'+(nbOn?'background:#C1275D;color:#fff;border-color:#C1275D;':'')+'" onclick="ctyToggle(\'c\',\'__nobr\')">Sem Brasil</button> ';}
+  var h='<button class="vtog2'+(sel.size===0?' on':'')+'" style="'+(sel.size===0?'background:#C1275D;color:#fff;border-color:#C1275D;':'')+'" onclick="ctyToggle(\''+kind+'\',\'\')">'+cX('Todos','All')+'</button> ';
+  if(kind==='c'){var nb=vals.filter(function(x){return x!=='Brazil';});var nbOn=sel.size===nb.length&&nb.every(function(x){return sel.has(x);});h+='<button class="vtog2'+(nbOn?' on':'')+'" style="'+(nbOn?'background:#C1275D;color:#fff;border-color:#C1275D;':'')+'" onclick="ctyToggle(\'c\',\'__nobr\')">'+cX('Sem Brasil','Excl. Brazil')+'</button> ';}
   vals.forEach(function(v){
     var on=sel.has(v);
     h+='<button class="vtog2'+(on?' on':'')+'" style="'+(on?'background:#C1275D;color:#fff;border-color:#C1275D;':'')+'" onclick="ctyToggle(\''+kind+'\',\''+v.replace(/'/g,"\\'")+'\')">'+v+'</button> ';
@@ -997,30 +996,33 @@ function _ctyChips(kind,vals,sel){
 }
 function _ctyCols(n,hex){return Array.apply(null,Array(n)).map(function(_,i){return i===n-1?hex:(i===n-2?hex+'99':hex+'40');});}
 var _cmpSort={k:'rate',d:-1};
-var _CMP_COLS=[['g','',1],['v','Volume'],['share','% do total'],['r','Rejeitados'],['rate','Taxa'],['rej','Rejeições (ciclos)'],['rh','Retrabalho DD (dias úteis)'],['avg','Retrabalho médio por opp']];
+function _cmpCols(){return [['g',''],['v','Volume'],['share',cX('% do total','% of total')],['r',cX('Rejeitados','Rejected')],['rate',cX('Taxa','Rate')],['rej',cX('Rejeições (ciclos)','Rejections (cycles)')],['rh',cX('Retrabalho DD (dias úteis)','DD rework (working days)')],['avg',cX('Retrabalho médio por opp','Average rework per opp')]];}
 function ctyCmpSort(k){if(_cmpSort.k===k)_cmpSort.d=-_cmpSort.d;else{_cmpSort.k=k;_cmpSort.d=(k==='g'?1:-1);}_ctyCmpTbl();}
 function ctyCmpDir(){_cmpSort.d=-_cmpSort.d;_ctyCmpTbl();}
 function _ctyCmpTbl(){
   var CD=(typeof COUNTRY_DATA!=='undefined')?COUNTRY_DATA:[];
   var hasCountry=CD.some(function(d){return d.c;});
   var dimKey=hasCountry?'c':'reg';
-  var groups={};CD.forEach(function(d){var g=d[dimKey]||'Sem país';(groups[g]=groups[g]||[]).push(d);});
+  var groups={};CD.forEach(function(d){var g=d[dimKey]||cX('Sem país','No country');(groups[g]=groups[g]||[]).push(d);});
   var tot=_ctySum(CD);
   var rows=Object.keys(groups).map(function(g){var s=_ctySum(groups[g]);return {g:g,s:s,v:s.v,share:_ctyRate(s.v,tot.v),r:s.r,rate:_ctyRate(s.r,s.v),rej:s.rej,rh:s.rh,avg:s.v>0?s.rh/s.v:0};});
   var ck=_cmpSort.k,cd=_cmpSort.d;
   rows.sort(function(a,b){var sa=a.v<20?1:0,sb=b.v<20?1:0;if(sa!==sb)return sa-sb;var x=ck==='g'?a.g.localeCompare(b.g):a[ck]-b[ck];if(x!==0)return x*cd;return b.v-a.v;});
   var te=document.getElementById('cty_tbl');if(!te)return;
-  var lbl={g:hasCountry?'País':'Região'};
-  var opts=_CMP_COLS.map(function(c){var l=c[0]==='g'?lbl.g+' (A–Z)':c[1];return '<option value="'+c[0]+'"'+(ck===c[0]?' selected':'')+'>'+l+'</option>';}).join('');
+  var gl=hasCountry?cX('País','Country'):cX('Região','Region');
+  var cols=_cmpCols();
+  var opts=cols.map(function(c){var l=c[0]==='g'?gl+' (A–Z)':c[1];return '<option value="'+c[0]+'"'+(ck===c[0]?' selected':'')+'>'+l+'</option>';}).join('');
   var arrow=function(k){return ck===k?(cd<0?' ▼':' ▲'):'';};
-  var avgF=function(s){return (s.v>0?(s.rh/s.v).toFixed(2).replace('.',','):'0')+'h';};
-  te.innerHTML='<div style="margin-bottom:8px;font-size:.72rem;color:#6b7280">Ordenar por <select onchange="ctyCmpSort(this.value)" style="font-size:.72rem;padding:3px 6px;border:1px solid #d1d5db;border-radius:6px">'+opts+'</select> <button class="vtog2" onclick="ctyCmpDir()">'+(cd<0?'Maior primeiro ▼':'Menor primeiro ▲')+'</button> <span style="margin-left:6px">Padrão: taxa de rejeição. Dá para ordenar clicando nos títulos das colunas.</span></div>'+
-    '<table class="dt"><thead><tr>'+_CMP_COLS.map(function(c){var k=c[0];return '<th'+(k==='g'?' style="text-align:left;cursor:pointer"':' style="cursor:pointer"')+' onclick="ctyCmpSort(\''+k+'\')">'+(k==='g'?lbl.g:c[1])+arrow(k)+'</th>';}).join('')+'</tr></thead><tbody>'+
+  var avgF=function(s){return cDP(s.v>0?(s.rh/s.v).toFixed(2):'0')+'h';};
+  te.innerHTML='<div style="margin-bottom:8px;font-size:.72rem;color:#6b7280">'+cX('Ordenar por','Sort by')+' <select onchange="ctyCmpSort(this.value)" style="font-size:.72rem;padding:3px 6px;border:1px solid #d1d5db;border-radius:6px">'+opts+'</select> <button class="vtog2" onclick="ctyCmpDir()">'+(cd<0?cX('Maior primeiro ▼','Highest first ▼'):cX('Menor primeiro ▲','Lowest first ▲'))+'</button> <span style="margin-left:6px">'+cX('Padrão: taxa de rejeição. Dá para ordenar clicando nos títulos das colunas.','Default: rejection rate. You can also sort by clicking the column headers.')+'</span></div>'+
+    '<table class="dt"><thead><tr>'+cols.map(function(c){var k=c[0];return '<th'+(k==='g'?' style="text-align:left;cursor:pointer"':' style="cursor:pointer"')+' onclick="ctyCmpSort(\''+k+'\')">'+(k==='g'?gl:c[1])+arrow(k)+'</th>';}).join('')+'</tr></thead><tbody>'+
     rows.map(function(x){var s=x.s,sm=s.v<20,bg=sm?'background:#fffbeb;color:#78716c;':'';
-      return '<tr><td style="'+bg+'text-align:left;font-weight:600">'+x.g+'</td><td style="'+bg+'">'+fmtVol(s.v)+'</td><td style="'+bg+'">'+fmtPct(x.share)+'</td><td style="'+bg+'">'+fmtVol(s.r)+'</td><td style="'+bg+'color:'+(sm?'#a8a29e':rejClr(x.rate))+';font-weight:700">'+fmtPct(x.rate)+'</td><td style="'+bg+'">'+fmtVol(s.rej)+'</td><td style="'+bg+'">'+_ctyH(s.rh)+' · '+_ctyD(s.rh).replace(' dias úteis','d')+'</td><td style="'+bg+'">'+avgF(s)+'</td></tr>';}).join('')+
-    '<tr style="font-weight:700;border-top:2px solid #e5e7eb"><td style="text-align:left">Total</td><td>'+fmtVol(tot.v)+'</td><td>100%</td><td>'+fmtVol(tot.r)+'</td><td>'+fmtPct(_ctyRate(tot.r,tot.v))+'</td><td>'+fmtVol(tot.rej)+'</td><td>'+_ctyH(tot.rh)+' · '+_ctyD(tot.rh).replace(' dias úteis','d')+'</td><td>'+avgF(tot)+'</td></tr></tbody></table>'+
-    '<div style="font-size:.68rem;color:#9ca3af;margin-top:6px">Linhas em amarelo claro: menos de 20 opps no período (taxa instável). Ficam sempre no fim da tabela, em qualquer ordenação.</div>';
-}function rTCty(){
+      return '<tr><td style="'+bg+'text-align:left;font-weight:600">'+x.g+'</td><td style="'+bg+'">'+cV(s.v)+'</td><td style="'+bg+'">'+cP(x.share)+'</td><td style="'+bg+'">'+cV(s.r)+'</td><td style="'+bg+'color:'+(sm?'#a8a29e':rejClr(x.rate))+';font-weight:700">'+cP(x.rate)+'</td><td style="'+bg+'">'+cV(s.rej)+'</td><td style="'+bg+'">'+_ctyH(s.rh)+' · '+_ctyDs(s.rh)+'</td><td style="'+bg+'">'+avgF(s)+'</td></tr>';}).join('')+
+    '<tr style="font-weight:700;border-top:2px solid #e5e7eb"><td style="text-align:left">Total</td><td>'+cV(tot.v)+'</td><td>100%</td><td>'+cV(tot.r)+'</td><td>'+cP(_ctyRate(tot.r,tot.v))+'</td><td>'+cV(tot.rej)+'</td><td>'+_ctyH(tot.rh)+' · '+_ctyDs(tot.rh)+'</td><td>'+avgF(tot)+'</td></tr></tbody></table>'+
+    '<div style="font-size:.68rem;color:#9ca3af;margin-top:6px">'+cX('Linhas em amarelo claro: menos de 20 opps no período (taxa instável). Ficam sempre no fim da tabela, em qualquer ordenação.','Light yellow rows: fewer than 20 opps in the period (unstable rate). They always stay at the bottom of the table, whatever the sort.')+'</div>';
+}
+function rTCty(){
+  ctyStatic();
   var CD=(typeof COUNTRY_DATA!=='undefined')?COUNTRY_DATA:[];
   var countries=[],regs=[];
   CD.forEach(function(d){if(d.c&&countries.indexOf(d.c)<0)countries.push(d.c);if(regs.indexOf(d.reg)<0)regs.push(d.reg);});
@@ -1028,79 +1030,68 @@ function _ctyCmpTbl(){
   countries.sort();regs.sort();
   var months=[];CD.forEach(function(d){if(months.indexOf(d.mo)<0)months.push(d.mo);});months.sort();
   var lbls=months.map(function(m){return gMLBL(m);});
-
-  // filtros
   var fe=document.getElementById('cty_filters');
   if(fe){
     fe.innerHTML=
-      (hasCountry?'<div style="margin-bottom:8px"><span style="font-size:.72rem;font-weight:700;color:#6b7280;margin-right:8px">País</span>'+_ctyChips('c',countries,_ctyC)+'</div>':'')+
-      '<div><span style="font-size:.72rem;font-weight:700;color:#6b7280;margin-right:8px">Atalho por região</span>'+_ctyChips('r',regs,_ctyR)+'</div>';
+      (hasCountry?'<div style="margin-bottom:8px"><span style="font-size:.72rem;font-weight:700;color:#6b7280;margin-right:8px">'+cX('País','Country')+'</span>'+_ctyChips('c',countries,_ctyC)+'</div>':'')+
+      '<div><span style="font-size:.72rem;font-weight:700;color:#6b7280;margin-right:8px">'+cX('Atalho por região','Region shortcut')+'</span>'+_ctyChips('r',regs,_ctyR)+'</div>';
   }
-  var ne=document.getElementById('cty_note');
-  if(ne)ne.innerHTML=hasCountry?'':'<div style="background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:8px;padding:10px 14px;font-size:.75rem;margin-bottom:12px"><b>País ainda não carregado.</b> O export "Status opps" não traz país; o filtro de país aparece aqui assim que o dado for adicionado. Enquanto isso, a aba mostra o total geral e o recorte por região.</div>';
-
   var sel=CD.filter(function(d){return (_ctyC.size===0||_ctyC.has(d.c))&&(_ctyR.size===0||_ctyR.has(d.reg));});
-  var T=_ctySum(sel);
-  var rejOpps=T.n1+T.n2+T.n3;
-  var rate=_ctyRate(T.r,T.v);
-
+  var TT=_ctySum(sel);
+  var rejOpps=TT.n1+TT.n2+TT.n3;
+  var rate=_ctyRate(TT.r,TT.v);
   var k=document.getElementById('k_cty');
   if(k)k.innerHTML=
-    '<div class="kpi"><div class="v">'+fmtVol(T.v)+'</div><div class="l">Volume (opps)</div></div>'+
-    '<div class="kpi re"><div class="v" style="color:'+rejClr(rate)+'">'+fmtPct(rate)+'</div><div class="l">Taxa de rejeição</div></div>'+
-    '<div class="kpi or"><div class="v">'+fmtVol(T.r)+'</div><div class="l">Opps rejeitados</div></div>'+
-    '<div class="kpi pu"><div class="v">'+fmtVol(T.rej)+'</div><div class="l">Rejeições (ciclos)<br><span style="font-size:9px;opacity:.6;font-weight:400">'+(rejOpps>0?(T.rej/rejOpps).toFixed(2).replace('.',','):'0')+' por opp rejeitado</span></div></div>'+
-    '<div class="kpi bl"><div class="v">'+_ctyH(T.rh)+'</div><div class="l">Retrabalho DD<br><span style="font-size:9px;opacity:.6;font-weight:400">'+_ctyD(T.rh)+' (1 dia útil = 8h)</span></div></div>'+
-    '<div class="kpi gr"><div class="v">'+(T.v>0?(T.rh/T.v).toFixed(2).replace('.',','):'0')+'h</div><div class="l">Retrabalho médio por opp</div></div>';
-
+    '<div class="kpi"><div class="v">'+cV(TT.v)+'</div><div class="l">'+cX('Volume (opps)','Volume (opps)')+'</div></div>'+
+    '<div class="kpi re"><div class="v" style="color:'+rejClr(rate)+'">'+cP(rate)+'</div><div class="l">'+cX('Taxa de rejeição','Rejection rate')+'</div></div>'+
+    '<div class="kpi or"><div class="v">'+cV(TT.r)+'</div><div class="l">'+cX('Opps rejeitados','Rejected opps')+'</div></div>'+
+    '<div class="kpi pu"><div class="v">'+cV(TT.rej)+'</div><div class="l">'+cX('Rejeições (ciclos)','Rejections (cycles)')+'<br><span style="font-size:9px;opacity:.6;font-weight:400">'+cDP(rejOpps>0?(TT.rej/rejOpps).toFixed(2):'0')+cX(' por opp rejeitado',' per rejected opp')+'</span></div></div>'+
+    '<div class="kpi bl"><div class="v">'+_ctyH(TT.rh)+'</div><div class="l">'+cX('Retrabalho DD','DD rework')+'<br><span style="font-size:9px;opacity:.6;font-weight:400">'+_ctyD(TT.rh)+' '+cX('(1 dia útil = 8h)','(1 working day = 8h)')+'</span></div></div>'+
+    '<div class="kpi gr"><div class="v">'+cDP(TT.v>0?(TT.rh/TT.v).toFixed(2):'0')+'h</div><div class="l">'+cX('Retrabalho médio por opp','Average rework per opp')+'</div></div>';
   function byMo(rows){return months.map(function(m){return _ctySum(rows.filter(function(d){return d.mo===m;}));});}
   var G=byMo(CD),S=byMo(sel);
   var scales={x:{grid:{display:false}},y:{beginAtZero:true,ticks:{font:{size:9}}},yr:{type:'linear',position:'right',min:0,grid:{display:false},ticks:{callback:function(v){return v+'%';},font:{size:9}}}};
   function combo(id,arr,colorBar){
     mk(id,{type:'bar',data:{labels:lbls,datasets:[
       {type:'bar',label:'Volume',data:arr.map(function(s){return s.v;}),backgroundColor:_ctyCols(arr.length,colorBar),borderRadius:3,yAxisID:'y'},
-      {type:'line',label:'Taxa de rejeição (%)',data:arr.map(function(s){return _ctyRate(s.r,s.v);}),borderColor:'#dc2626',backgroundColor:'#dc2626',tension:.3,pointRadius:3,yAxisID:'yr'}
+      {type:'line',label:cX('Taxa de rejeição (%)','Rejection rate (%)'),data:arr.map(function(s){return _ctyRate(s.r,s.v);}),borderColor:'#dc2626',backgroundColor:'#dc2626',tension:.3,pointRadius:3,yAxisID:'yr'}
     ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:LEGEND_OPTS},scales:scales,animation:{duration:300}}});
   }
   combo('cty_g',G,'#C1275D');
   combo('cty_s',S,'#7c3aed');
   mk('cty_n',{type:'bar',data:{labels:lbls,datasets:[
-    {label:'1 rejeição',data:S.map(function(s){return s.n1;}),backgroundColor:'#fbbf24'},
-    {label:'2 rejeições',data:S.map(function(s){return s.n2;}),backgroundColor:'#f97316'},
-    {label:'3+ rejeições',data:S.map(function(s){return s.n3;}),backgroundColor:'#dc2626'}
+    {label:cX('1 rejeição','1 rejection'),data:S.map(function(s){return s.n1;}),backgroundColor:'#fbbf24'},
+    {label:cX('2 rejeições','2 rejections'),data:S.map(function(s){return s.n2;}),backgroundColor:'#f97316'},
+    {label:cX('3+ rejeições','3+ rejections'),data:S.map(function(s){return s.n3;}),backgroundColor:'#dc2626'}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:LEGEND_OPTS},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true,ticks:{font:{size:9}}}},animation:{duration:300}}});
   mk('cty_h',{type:'bar',data:{labels:lbls,datasets:[
-    {type:'bar',label:'Horas de retrabalho DD',data:S.map(function(s){return Math.round(s.rh);}),backgroundColor:_ctyCols(S.length,'#0891b2'),borderRadius:3,yAxisID:'y'},
-    {type:'line',label:'Retrabalho médio por opp (h)',data:S.map(function(s){return s.v>0?Math.round(s.rh/s.v*100)/100:0;}),borderColor:'#dc2626',backgroundColor:'#dc2626',tension:.3,pointRadius:3,yAxisID:'yr'}
+    {type:'bar',label:cX('Horas de retrabalho DD','DD rework hours'),data:S.map(function(s){return Math.round(s.rh);}),backgroundColor:_ctyCols(S.length,'#0891b2'),borderRadius:3,yAxisID:'y'},
+    {type:'line',label:cX('Retrabalho médio por opp (h)','Average rework per opp (h)'),data:S.map(function(s){return s.v>0?Math.round(s.rh/s.v*100)/100:0;}),borderColor:'#dc2626',backgroundColor:'#dc2626',tension:.3,pointRadius:3,yAxisID:'yr'}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:LEGEND_OPTS},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{font:{size:9}}},yr:{type:'linear',position:'right',min:0,grid:{display:false},ticks:{callback:function(v){return v+'h';},font:{size:9}}}},animation:{duration:300}}});
-
-  // ── mês mais recente vs anterior (por país se houver; senão por região)
   var cmpEl=document.getElementById('cty_cmp_sub');
   if(months.length>=2){
     var mL=months[months.length-1],mP=months[months.length-2];
     var dK=hasCountry?'c':'reg';
-    var cmpKeys=[];CD.forEach(function(d){var g=d[dK]||'Sem país';if(cmpKeys.indexOf(g)<0)cmpKeys.push(g);});
-    function mSum(g,m){return _ctySum(CD.filter(function(d){return d.mo===m&&(g===null||(d[dK]||'Sem país')===g);}));}
+    var cmpKeys=[];CD.forEach(function(d){var g=d[dK]||cX('Sem país','No country');if(cmpKeys.indexOf(g)<0)cmpKeys.push(g);});
+    function mSum(g,m){return _ctySum(CD.filter(function(d){return d.mo===m&&(g===null||(d[dK]||cX('Sem país','No country'))===g);}));}
     var cmpAll=cmpKeys.slice();cmpKeys=cmpKeys.filter(function(g){return mSum(g,mL).v>=20;});var cmpHid=cmpAll.filter(function(g){return cmpKeys.indexOf(g)<0;});
     cmpKeys.sort(function(a,b){return mSum(b,mL).v-mSum(a,mL).v;});
     var cmpLbl=['Total'].concat(cmpKeys),cmpGrp=[null].concat(cmpKeys);
     var rP=cmpGrp.map(function(g){var s=mSum(g,mP);return _ctyRate(s.r,s.v);});
     var rL=cmpGrp.map(function(g){var s=mSum(g,mL);return _ctyRate(s.r,s.v);});
     mk('cty_m',{type:'bar',data:{labels:cmpLbl,datasets:[
-      {label:gMLBL(mP)+' (referência)',data:rP,backgroundColor:'#9ca3af88',borderRadius:3},
-      {label:gMLBL(mL)+' (mês atual)',data:rL,backgroundColor:'#C1275D',borderRadius:3}
-    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:LEGEND_OPTS,tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.parsed.y.toString().replace('.',',')+'%';}}}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{callback:function(v){return v+'%';},font:{size:9}}}},animation:{duration:300}}});
+      {label:gMLBL(mP)+cX(' (referência)',' (reference)'),data:rP,backgroundColor:'#9ca3af88',borderRadius:3},
+      {label:gMLBL(mL)+cX(' (mês atual)',' (current month)'),data:rL,backgroundColor:'#C1275D',borderRadius:3}
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:LEGEND_OPTS,tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+cDP(c.parsed.y)+'%';}}}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{callback:function(v){return v+'%';},font:{size:9}}}},animation:{duration:300}}});
     if(cmpEl){
       var tP=mSum(null,mP),tL=mSum(null,mL);
       function dl(a,b,fmt,inv){var d=a-b;var up=d>0;var good=inv?!up:up;var cl=d===0?'#6b7280':(good?'#16a34a':'#dc2626');return '<span style="color:'+cl+';font-weight:700">'+(d>0?'▲ ':d<0?'▼ ':'')+fmt(Math.abs(d))+'</span>';}
       cmpEl.innerHTML=
-        '<b>'+gMLBL(mL)+'</b> contra <b>'+gMLBL(mP)+'</b> · volume '+fmtVol(tL.v)+' ('+dl(tL.v,tP.v,fmtVol,false)+') · taxa de rejeição '+fmtPct(_ctyRate(tL.r,tL.v))+' ('+dl(_ctyRate(tL.r,tL.v),_ctyRate(tP.r,tP.v),function(x){return (Math.round(x*10)/10).toString().replace('.',',')+' p.p.';},true)+') · retrabalho DD '+_ctyH(tL.rh)+' ('+dl(tL.rh,tP.rh,_ctyH,true)+')'+(cmpHid.length?'<div style="font-size:.68rem;color:#9ca3af;margin-top:4px">Ficam fora do gráfico os países com menos de 20 opps em '+gMLBL(mL)+' ('+cmpHid.join(', ')+').</div>':'');
+        '<b>'+gMLBL(mL)+'</b> '+cX('contra','vs')+' <b>'+gMLBL(mP)+'</b> · '+cX('volume','volume')+' '+cV(tL.v)+' ('+dl(tL.v,tP.v,cV,false)+') · '+cX('taxa de rejeição','rejection rate')+' '+cP(_ctyRate(tL.r,tL.v))+' ('+dl(_ctyRate(tL.r,tL.v),_ctyRate(tP.r,tP.v),function(x){return cDP(Math.round(x*10)/10)+' p.p.';},true)+') · '+cX('retrabalho DD','DD rework')+' '+_ctyH(tL.rh)+' ('+dl(tL.rh,tP.rh,_ctyH,true)+')'+(cmpHid.length?'<div style="font-size:.68rem;color:#9ca3af;margin-top:4px">'+cX('Ficam fora do gráfico os países com menos de 20 opps em '+gMLBL(mL)+' (','Countries with fewer than 20 opps in '+gMLBL(mL)+' are left out of the chart (')+cmpHid.join(', ')+').</div>':'');
     }
   } else if(cmpEl){cmpEl.innerHTML='';}
-
   _ctySfRender();
   rTCtyExec();
-  // tabela comparativa (país se houver; senão região)
   _ctyCmpTbl();
 }
 
